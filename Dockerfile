@@ -1,8 +1,9 @@
-# Container image that runs your code
-FROM alpine:3.10
+FROM cirrusci/flutter:stable
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
-COPY entrypoint.sh /entrypoint.sh
+COPY hello_flutter/ /hello_flutter/
 
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
+WORKDIR "/hello_flutter"
+
+RUN flutter build
+
 ENTRYPOINT ["/entrypoint.sh"]
