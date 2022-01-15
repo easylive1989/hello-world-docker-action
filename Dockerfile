@@ -4,5 +4,5 @@ WORKDIR "/hello_flutter"
 RUN flutter build appbundle
 
 FROM python:latest as upload
-COPY --from=build build/app/outputs/bundle/release/app-release.aab /output
+COPY --from=build /hello_flutter/build/app/outputs/bundle/release/app-release.aab /output/
 RUN python hello.py /output/app-release.aab
